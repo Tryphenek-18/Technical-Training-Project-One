@@ -1,0 +1,710 @@
+/* ==========================================================================
+   Styles Personnalisés - ÉpicerieExpress
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --vert-principal: #10b981;
+  --vert-fonce: #059669;
+  --vert-clair: #d1fae5;
+  --accent-dore: #f59e0b;
+  --texte-sombre: #0f172a;
+  --texte-secondaire: #475569;
+  --fond-page: #f8fafc;
+  --fond-carte: #ffffff;
+  --bordure-douce: #e2e8f0;
+  --ombre-carte: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+  --ombre-survol: 0 20px 30px -10px rgba(16, 185, 129, 0.15), 0 10px 15px -5px rgba(0, 0, 0, 0.05);
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: var(--fond-page);
+  color: var(--texte-sombre);
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   Navigation Bar
+   -------------------------------------------------------------------------- */
+.navbar-epicerie {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--bordure-douce);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+}
+
+.logo-marque {
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--texte-sombre);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.logo-icon {
+  background: linear-gradient(135deg, var(--vert-principal), var(--vert-fonce));
+  color: white;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+}
+
+.nav-link-custom {
+  font-weight: 600;
+  color: var(--texte-secondaire);
+  padding: 0.5rem 1rem !important;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.nav-link-custom:hover, 
+.nav-link-custom.active {
+  color: var(--vert-fonce);
+  background-color: var(--vert-clair);
+}
+
+.barre-recherche-wrapper {
+  position: relative;
+  max-width: 380px;
+  width: 100%;
+}
+
+.barre-recherche-input {
+  border-radius: 50px;
+  padding-left: 2.6rem;
+  padding-right: 1rem;
+  border: 1px solid var(--bordure-douce);
+  background-color: #f1f5f9;
+  font-size: 0.92rem;
+  transition: all 0.25s ease;
+}
+
+.barre-recherche-input:focus {
+  background-color: #ffffff;
+  border-color: var(--vert-principal);
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15);
+}
+
+.icon-recherche {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+.bouton-panier-nav {
+  position: relative;
+  border-radius: 50px;
+  background-color: var(--vert-clair);
+  color: var(--vert-fonce);
+  border: none;
+  padding: 0.5rem 1.2rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.25s ease;
+}
+
+.bouton-panier-nav:hover {
+  background-color: var(--vert-principal);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(16, 185, 129, 0.25);
+}
+
+.badge-compteur-panier {
+  background-color: #ef4444;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 800;
+  border-radius: 50px;
+  padding: 0.2rem 0.55rem;
+}
+
+/* --------------------------------------------------------------------------
+   Hero Bannière Section
+   -------------------------------------------------------------------------- */
+.banniere-hero {
+  background: linear-gradient(135deg, #064e3b 0%, #047857 50%, #10b981 100%);
+  border-radius: 24px;
+  color: white;
+  padding: 3.5rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(6, 78, 59, 0.2);
+}
+
+.banniere-hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  pointer-events: none;
+}
+
+.badge-livraison {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.titre-hero {
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.texte-hero {
+  font-size: 1.1rem;
+  color: #e2e8f0;
+  max-width: 540px;
+}
+
+.img-hero-container {
+  position: relative;
+  text-align: center;
+}
+
+.img-hero {
+  max-height: 320px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border: 4px solid rgba(255, 255, 255, 0.2);
+}
+
+/* --------------------------------------------------------------------------
+   Carousel des Offres
+   -------------------------------------------------------------------------- */
+.carousel-offres {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--ombre-carte);
+}
+
+.carte-offre-banner {
+  height: 220px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+  color: white;
+  position: relative;
+}
+
+.bg-offre-1 {
+  background: linear-gradient(90deg, #b91c1c 0%, #ef4444 100%);
+}
+
+.bg-offre-2 {
+  background: linear-gradient(90deg, #4338ca 0%, #6366f1 100%);
+}
+
+.bg-offre-3 {
+  background: linear-gradient(90deg, #d97706 0%, #f59e0b 100%);
+}
+
+.code-promo-badge {
+  background-color: white;
+  color: var(--texte-sombre);
+  font-weight: 800;
+  padding: 0.3rem 0.8rem;
+  border-radius: 6px;
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   Catégories Section
+   -------------------------------------------------------------------------- */
+.carte-categorie {
+  background-color: var(--fond-carte);
+  border: 1px solid var(--bordure-douce);
+  border-radius: 16px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--ombre-carte);
+}
+
+.carte-categorie:hover, 
+.carte-categorie.active {
+  transform: translateY(-5px);
+  border-color: var(--vert-principal);
+  background-color: var(--vert-clair);
+  box-shadow: var(--ombre-survol);
+}
+
+.icon-categorie-wrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin: 0 auto 0.8rem auto;
+  transition: all 0.3s ease;
+}
+
+.carte-categorie:hover .icon-categorie-wrapper,
+.carte-categorie.active .icon-categorie-wrapper {
+  background-color: var(--vert-principal);
+  color: white;
+}
+
+/* --------------------------------------------------------------------------
+   Filtres Sidebar
+   -------------------------------------------------------------------------- */
+.panneau-filtre {
+  background-color: var(--fond-carte);
+  border-radius: 20px;
+  border: 1px solid var(--bordure-douce);
+  padding: 1.5rem;
+  box-shadow: var(--ombre-carte);
+  position: sticky;
+  top: 90px;
+}
+
+.titre-filtre {
+  font-size: 1.15rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--bordure-douce);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.2rem;
+}
+
+.label-filtre-section {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--texte-secondaire);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.8rem;
+}
+
+.filtre-regime-btn {
+  border: 1px solid var(--bordure-douce);
+  background-color: #f8fafc;
+  color: var(--texte-secondaire);
+  font-weight: 600;
+  border-radius: 50px;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.filtre-regime-btn.active, 
+.filtre-regime-btn:hover {
+  background-color: var(--texte-sombre);
+  color: white;
+  border-color: var(--texte-sombre);
+}
+
+.curseur-prix {
+  accent-color: var(--vert-principal);
+}
+
+/* --------------------------------------------------------------------------
+   Cartes Produits
+   -------------------------------------------------------------------------- */
+.carte-produit {
+  background-color: var(--fond-carte);
+  border-radius: 20px;
+  border: 1px solid var(--bordure-douce);
+  overflow: hidden;
+  box-shadow: var(--ombre-carte);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.carte-produit:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--ombre-survol);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.produit-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 190px;
+  overflow: hidden;
+  background-color: #f8fafc;
+}
+
+.produit-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.carte-produit:hover .produit-img {
+  transform: scale(1.08);
+}
+
+.badge-regime {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: 50px;
+  backdrop-filter: blur(6px);
+}
+
+.badge-vege {
+  background-color: rgba(220, 252, 231, 0.95);
+  color: #15803d;
+  border: 1px solid #86efac;
+}
+
+.badge-non-vege {
+  background-color: rgba(254, 226, 226, 0.95);
+  color: #b91c1c;
+  border: 1px solid #fca5a5;
+}
+
+.badge-promo-reduction {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: #ef4444;
+  color: white;
+  font-weight: 800;
+  font-size: 0.72rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 50px;
+}
+
+.corps-produit {
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.categorie-tag {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--vert-fonce);
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.titre-produit {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--texte-sombre);
+  margin-bottom: 0.4rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 2.7rem;
+}
+
+.etoiles-notation {
+  color: var(--accent-dore);
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  margin-bottom: 0.8rem;
+}
+
+.unite-prix {
+  font-size: 0.8rem;
+  color: var(--texte-secondaire);
+}
+
+.prix-actuel {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--texte-sombre);
+}
+
+.prix-ancien {
+  text-decoration: line-through;
+  color: #94a3b8;
+  font-size: 0.9rem;
+  margin-left: 0.4rem;
+}
+
+.btn-ajouter-produit {
+  background-color: var(--vert-clair);
+  color: var(--vert-fonce);
+  border: none;
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 0.6rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+  margin-top: auto;
+}
+
+.btn-ajouter-produit:hover {
+  background-color: var(--vert-principal);
+  color: white;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.btn-detail-apercu {
+  background-color: #f1f5f9;
+  color: var(--texte-secondaire);
+  border: none;
+  border-radius: 12px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.btn-detail-apercu:hover {
+  background-color: #e2e8f0;
+  color: var(--texte-sombre);
+}
+
+/* --------------------------------------------------------------------------
+   Modal Détails Produit
+   -------------------------------------------------------------------------- */
+.modal-content-epicerie {
+  border-radius: 24px;
+  border: none;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.modal-header-custom {
+  border-bottom: 1px solid var(--bordure-douce);
+  padding: 1.2rem 1.5rem;
+}
+
+.modal-img-container {
+  border-radius: 16px;
+  overflow: hidden;
+  max-height: 280px;
+  width: 100%;
+}
+
+.modal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.selecteur-quantite {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--bordure-douce);
+  border-radius: 50px;
+  background-color: #f8fafc;
+  padding: 0.2rem;
+}
+
+.btn-quantite {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background-color: white;
+  color: var(--texte-sombre);
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.btn-quantite:hover {
+  background-color: var(--vert-principal);
+  color: white;
+}
+
+.valeur-quantite {
+  width: 40px;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   Tiroir Offcanvas du Panier
+   -------------------------------------------------------------------------- */
+.tiroir-panier-custom {
+  width: 420px !important;
+  border-top-left-radius: 24px;
+  border-bottom-left-radius: 24px;
+}
+
+.element-panier {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px dashed var(--bordure-douce);
+}
+
+.img-panier-thumb {
+  width: 65px;
+  height: 65px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.nom-element-panier {
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 0.2rem;
+}
+
+.prix-element-panier {
+  font-weight: 800;
+  color: var(--vert-fonce);
+  font-size: 0.95rem;
+}
+
+.btn-supprimer-article {
+  color: #ef4444;
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  padding: 0.4rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-supprimer-article:hover {
+  background-color: #fee2e2;
+}
+
+.panier-vide-box {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--texte-secondaire);
+}
+
+.panier-vide-icon {
+  font-size: 3.5rem;
+  color: #cbd5e1;
+  margin-bottom: 1rem;
+}
+
+.resume-facture {
+  background-color: #f8fafc;
+  border-radius: 16px;
+  padding: 1.2rem;
+  margin-top: 1rem;
+  border: 1px solid var(--bordure-douce);
+}
+
+.ligne-facture {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.92rem;
+  margin-bottom: 0.5rem;
+  color: var(--texte-secondaire);
+}
+
+.ligne-total {
+  border-top: 2px solid var(--bordure-douce);
+  padding-top: 0.6rem;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--texte-sombre);
+}
+
+/* --------------------------------------------------------------------------
+   Toast Notifications
+   -------------------------------------------------------------------------- */
+.toast-conteneur-custom {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1100;
+}
+
+.toast-epicerie {
+  background: var(--texte-sombre);
+  color: white;
+  border-radius: 14px;
+  padding: 0.9rem 1.3rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   Pied de page (Footer)
+   -------------------------------------------------------------------------- */
+.pied-de-page {
+  background-color: #0f172a;
+  color: #94a3b8;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+  margin-top: 5rem;
+}
+
+.titre-colonne-footer {
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 1.2rem;
+}
+
+.lien-footer {
+  color: #94a3b8;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.6rem;
+  transition: all 0.2s ease;
+}
+
+.lien-footer:hover {
+  color: var(--vert-principal);
+  transform: translateX(3px);
+}

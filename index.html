@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="TrypheneMart - India's fastest online grocery delivery service. Fresh fruits, vegetables, dairy & daily essentials delivered in 30 minutes.">
+  <title>TrypheneMart | Online Grocery Delivery India</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- ==========================================
+       1. HEADER & NAVIGATION BAR
+       ========================================== -->
+  <header class="sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-epicerie">
+      <div class="container">
+        <!-- Logo -->
+        <a class="logo-marque" href="#home">
+          <div class="logo-icon">
+            <i class="bi bi-basket-fill"></i>
+          </div>
+          <span>Tryphene<span class="text-success">Mart</span></span>
+        </a>
+
+        <!-- Mobile Cart & Auth Buttons -->
+        <div class="d-flex align-items-center gap-2 d-lg-none ms-auto me-2">
+          <button class="bouton-panier-nav" type="button" data-bs-toggle="offcanvas" data-bs-target="#tiroir-panier"
+            aria-controls="tiroir-panier">
+            <i class="bi bi-cart-fill"></i>
+            <span class="badge-compteur-panier" id="badge-compteur-panier-mobile">0</span>
+          </button>
+        </div>
+
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+          data-bs-target="#menu-principal-navigation" aria-controls="menu-principal-navigation" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navigation Links -->
+        <div class="collapse navbar-collapse" id="menu-principal-navigation">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4 gap-lg-1">
+            <li class="nav-item">
+              <a class="nav-link nav-link-custom active" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-custom" href="#categories">Categories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-custom" href="#offers">Offers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-custom" href="#produits">Shop</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-custom" href="#contact">Contact</a>
+            </li>
+          </ul>
+
+          <!-- Search Bar -->
+          <form class="barre-recherche-wrapper me-lg-3 my-2 my-lg-0" id="formulaire-recherche-nav"
+            onsubmit="event.preventDefault();">
+            <i class="bi bi-search icon-recherche"></i>
+            <input class="form-control barre-recherche-input" type="search" id="input-recherche-nav"
+              placeholder="Search groceries (e.g. Apples, Milk, Coffee)..." aria-label="Search">
+          </form>
+
+          <!-- User Authentication Section (Logged out vs Logged in) -->
+          <div class="me-lg-2 my-2 my-lg-0" id="container-auth-nav">
+            <!-- Logged out button -->
+            <button class="btn btn-outline-success fw-bold rounded-pill px-3 py-1-5 d-flex align-items-center gap-1"
+              id="btn-ouvrir-auth-modal" data-bs-toggle="modal" data-bs-target="#modal-auth">
+              <i class="bi bi-person-circle fs-5"></i> <span>Login / Register</span>
+            </button>
+
+            <!-- Logged in dropdown (Hidden by default) -->
+            <div class="dropdown d-none" id="dropdown-compte-utilisateur">
+              <button
+                class="btn btn-success fw-bold rounded-pill dropdown-toggle px-3 py-1-5 d-flex align-items-center gap-1"
+                type="button" id="btnUserMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-person-check-fill fs-5"></i> <span id="nav-nom-utilisateur">User Account</span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end shadow border-0 rounded-4 mt-2" aria-labelledby="btnUserMenu">
+                <li>
+                  <h6 class="dropdown-header text-uppercase small text-muted">My Account</h6>
+                </li>
+                <li><a class="dropdown-item" href="#contact" id="btn-user-orders"><i
+                      class="bi bi-bag-check me-2 text-success"></i> My Orders</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><button class="dropdown-item text-danger fw-bold" id="btn-deconnexion"><i
+                      class="bi bi-box-arrow-right me-2"></i> Logout</button></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Cart Button Desktop -->
+          <div class="d-none d-lg-block">
+            <button class="bouton-panier-nav" type="button" data-bs-toggle="offcanvas" data-bs-target="#tiroir-panier"
+              aria-controls="tiroir-panier" id="btn-ouvrir-panier">
+              <i class="bi bi-cart3 fs-5"></i>
+              <span>My Cart</span>
+              <span class="badge-compteur-panier" id="badge-compteur-panier">0</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ==========================================
+         2. HERO BANNER SECTION
+         ========================================== -->
+    <section class="py-4 py-lg-5" id="home">
+      <div class="container">
+        <div class="banniere-hero">
+          <div class="row align-items-center gy-4">
+            <div class="col-lg-7">
+              <div class="badge-livraison mb-3">
+                <i class="bi bi-lightning-charge-fill text-warning"></i> Lightning 30-Min Delivery
+              </div>
+              <h1 class="titre-hero mb-3">Fresh & Organic Groceries Delivered to Your Doorstep!</h1>
+              <p class="texte-hero mb-4">Shop 500+ daily essentials, farm-fresh fruits & vegetables, dairy, and
+                household items delivered across India in 30 minutes.</p>
+              <div class="d-flex flex-wrap gap-3">
+                <a href="#produits" class="btn btn-warning btn-lg fw-bold rounded-pill px-4 shadow">
+                  <i class="bi bi-bag-check-fill me-2"></i> Explore Store
+                </a>
+                <a href="#offers" class="btn btn-outline-light btn-lg fw-bold rounded-pill px-4">
+                  Today's Offers
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-5 d-none d-lg-block">
+              <div class="img-hero-container">
+                <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800&q=80"
+                  alt="Fresh Grocery Basket" class="img-fluid img-hero">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         3. PROMOTIONAL OFFERS SECTION (CAROUSEL)
+         ========================================== -->
+    <section class="py-4" id="offers">
+      <div class="container">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+          <div>
+            <h2 class="fw-bold mb-1">🔥 Exclusive Offers & Promo Deals</h2>
+            <p class="text-muted mb-0">Grab instant discounts on your weekly grocery shopping</p>
+          </div>
+        </div>
+
+        <div id="carousel-offres-promos" class="carousel slide carousel-offres" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carousel-offres-promos" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carousel-offres-promos" data-bs-slide-to="1"
+              aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carousel-offres-promos" data-bs-slide-to="2"
+              aria-label="Slide 3"></button>
+          </div>
+
+          <div class="carousel-inner">
+            <!-- Offer 1 -->
+            <div class="carousel-item active" data-bs-interval="4000">
+              <div class="carte-offre-banner bg-offre-1">
+                <div class="row align-items-center w-100">
+                  <div class="col-md-8">
+                    <span class="badge bg-white text-danger fw-bold uppercase mb-2">Freshness Festival</span>
+                    <h3 class="fw-extrabold mb-1">20% Off Organic Fruits & Vegetables</h3>
+                    <p class="mb-2">Applicable on all farm fresh produce with coupon code.</p>
+                    <span class="code-promo-badge"><i class="bi bi-tag-fill me-1"></i> Code: FRESH20</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Offer 2 -->
+            <div class="carousel-item" data-bs-interval="4000">
+              <div class="carte-offre-banner bg-offre-2">
+                <div class="row align-items-center w-100">
+                  <div class="col-md-8">
+                    <span class="badge bg-warning text-dark fw-bold mb-2">Breakfast Combo</span>
+                    <h3 class="fw-extrabold mb-1">Morning Starter Bundle</h3>
+                    <p class="mb-2">Buy 1 Toned Milk + 1 Mango Juice, get 1 Curd Tub FREE!</p>
+                    <span class="code-promo-badge"><i class="bi bi-tag-fill me-1"></i> Code: BREAKFAST</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Offer 3 -->
+            <div class="carousel-item" data-bs-interval="4000">
+              <div class="carte-offre-banner bg-offre-3">
+                <div class="row align-items-center w-100">
+                  <div class="col-md-8">
+                    <span class="badge bg-dark text-white fw-bold mb-2">South Indian Special</span>
+                    <h3 class="fw-extrabold mb-1">15% Off Filter Coffee & Munchies</h3>
+                    <p class="mb-2">Fuel your morning with authentic Chikmagalur roasted coffee.</p>
+                    <span class="code-promo-badge"><i class="bi bi-tag-fill me-1"></i> Code: COFFEE15</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="carousel-control-prev" type="button" data-bs-target="#carousel-offres-promos"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carousel-offres-promos"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         4. GROCERY CATEGORIES SECTION
+         ========================================== -->
+    <section class="py-4" id="categories">
+      <div class="container">
+        <div class="text-center max-w-xl mx-auto mb-4">
+          <h2 class="fw-bold">Explore Grocery Categories</h2>
+          <p class="text-muted">Handpicked fresh categories for your daily household needs</p>
+        </div>
+
+        <div class="row g-3 justify-content-center">
+          <div class="col-6 col-md-4 col-lg-2-4">
+            <div class="carte-categorie active" data-categorie="tous">
+              <div class="icon-categorie-wrapper">
+                <i class="bi bi-grid-fill"></i>
+              </div>
+              <h6 class="fw-bold mb-0">All Items</h6>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2-4">
+            <div class="carte-categorie" data-categorie="fruits-veg">
+              <div class="icon-categorie-wrapper">
+                🍎
+              </div>
+              <h6 class="fw-bold mb-0">Fruits & Vegetables</h6>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2-4">
+            <div class="carte-categorie" data-categorie="dairy-bakery">
+              <div class="icon-categorie-wrapper">
+                🥛
+              </div>
+              <h6 class="fw-bold mb-0">Dairy & Bakery</h6>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2-4">
+            <div class="carte-categorie" data-categorie="snacks">
+              <div class="icon-categorie-wrapper">
+                🥨
+              </div>
+              <h6 class="fw-bold mb-0">Snacks & Munchies</h6>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2-4">
+            <div class="carte-categorie" data-categorie="beverages">
+              <div class="icon-categorie-wrapper">
+                🧃
+              </div>
+              <h6 class="fw-bold mb-0">Beverages & Teas</h6>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2-4">
+            <div class="carte-categorie" data-categorie="household">
+              <div class="icon-categorie-wrapper">
+                🧹
+              </div>
+              <h6 class="fw-bold mb-0">Household & Cleaning</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         5. PRODUCT STORE & JAVASCRIPT FILTERING
+         ========================================== -->
+    <section class="py-5" id="produits">
+      <div class="container">
+        <div class="row g-4">
+
+          <!-- SIDEBAR FILTER PANEL -->
+          <aside class="col-lg-3">
+            <div class="panneau-filtre">
+              <div class="titre-filtre">
+                <span><i class="bi bi-sliders me-2"></i>Filters</span>
+                <button class="btn btn-sm btn-link text-decoration-none text-muted p-0"
+                  id="btn-reinitialiser-filtres">Reset All</button>
+              </div>
+
+              <!-- Dietary Filter (Veg / Non-Veg) -->
+              <div class="mb-4">
+                <label class="label-filtre-section">Dietary Preference</label>
+                <div class="d-flex flex-wrap gap-2" id="groupe-filtre-regime">
+                  <button type="button" class="filtre-regime-btn active" data-regime="tous">All</button>
+                  <button type="button" class="filtre-regime-btn" data-regime="vege">🌱 Veg</button>
+                  <button type="button" class="filtre-regime-btn" data-regime="non-vege">🍖 Non-Veg</button>
+                </div>
+              </div>
+
+              <!-- Price Range Filter -->
+              <div class="mb-4">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <label class="label-filtre-section mb-0">Max Price</label>
+                  <span class="fw-bold text-success" id="valeur-prix-max">₹ 500</span>
+                </div>
+                <input type="range" class="form-range curseur-prix" id="curseur-prix-max" min="30" max="500" step="10"
+                  value="500">
+                <div class="d-flex justify-content-between text-muted small">
+                  <span>₹ 30</span>
+                  <span>₹ 500</span>
+                </div>
+              </div>
+
+              <!-- Category Select Filter -->
+              <div class="mb-4">
+                <label for="select-filtre-categorie" class="label-filtre-section">Category</label>
+                <select class="form-select rounded-3" id="select-filtre-categorie">
+                  <option value="tous">All Categories</option>
+                  <option value="fruits-veg">Fruits & Vegetables</option>
+                  <option value="dairy-bakery">Dairy & Bakery</option>
+                  <option value="snacks">Snacks & Munchies</option>
+                  <option value="beverages">Beverages & Teas</option>
+                  <option value="household">Household & Cleaning</option>
+                </select>
+              </div>
+
+              <!-- Brand Select Filter -->
+              <div class="mb-2">
+                <label for="select-filtre-marque" class="label-filtre-section">Brand</label>
+                <select class="form-select rounded-3" id="select-filtre-marque">
+                  <option value="tous">All Brands</option>
+                  <option value="BioFarm">BioFarm</option>
+                  <option value="Amul">Amul</option>
+                  <option value="NaturePure">NaturePure</option>
+                  <option value="RoyalGourmet">RoyalGourmet</option>
+                  <option value="GreenHome">GreenHome</option>
+                </select>
+              </div>
+            </div>
+          </aside>
+
+          <!-- MAIN PRODUCTS GRID -->
+          <div class="col-lg-9">
+            <!-- Top Toolbar & Sort -->
+            <div
+              class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center bg-white p-3 rounded-4 border mb-4 shadow-sm gap-2">
+              <span class="fw-semibold text-muted" id="compteur-resultats-produits">Loading items...</span>
+
+              <div class="d-flex align-items-center gap-2">
+                <label for="select-tri-produits" class="small text-nowrap fw-bold text-muted mb-0">Sort By:</label>
+                <select class="form-select form-select-sm rounded-pill w-auto" id="select-tri-produits">
+                  <option value="defaut">Popularity</option>
+                  <option value="prix-croissant">Price: Low to High</option>
+                  <option value="prix-decroissant">Price: High to Low</option>
+                  <option value="note">Customer Rating</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Dynamic Product Cards Grid -->
+            <div class="row g-3 g-md-4" id="grille-produits">
+              <!-- Cards rendered dynamically by app.js -->
+            </div>
+
+            <!-- No Products Found Message -->
+            <div class="text-center py-5 d-none" id="message-aucun-produit">
+              <i class="bi bi-search fs-1 text-muted"></i>
+              <h5 class="fw-bold mt-3">No products match your selected filters</h5>
+              <p class="text-muted">Try adjusting the price range or resetting your search filters.</p>
+              <button class="btn btn-outline-success rounded-pill px-4 mt-2" id="btn-reset-aucun-resultat">View All
+                Items</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================
+       6. PRODUCT DETAILS MODAL (BOOTSTRAP)
+       ========================================== -->
+  <div class="modal fade" id="modal-detail-produit" tabindex="-1" aria-labelledby="modalTitreProduit"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content modal-content-epicerie">
+        <div class="modal-header modal-header-custom border-0 pb-0">
+          <span class="badge bg-success-subtle text-success fw-bold uppercase rounded-pill px-3 py-2"
+            id="modal-categorie-badge">Category</span>
+          <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="row gy-4 align-items-center">
+            <div class="col-md-6">
+              <div class="modal-img-container shadow-sm">
+                <img src="" alt="Product" id="modal-img-produit" class="modal-img">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <span id="modal-badge-regime"></span>
+                <span class="small text-muted" id="modal-marque-produit"></span>
+              </div>
+
+              <h3 class="fw-bold mb-2" id="modalTitreProduit">Product Name</h3>
+
+              <div class="etoiles-notation mb-3">
+                <span id="modal-etoiles-html"></span>
+                <span class="text-muted ms-1" id="modal-note-texte"></span>
+              </div>
+
+              <div class="d-flex align-items-baseline gap-2 mb-3">
+                <span class="prix-actuel text-success fs-2" id="modal-prix-produit">₹ 0.00</span>
+                <span class="unite-prix" id="modal-unite-produit"></span>
+                <span class="prix-ancien ms-2" id="modal-ancien-prix-produit"></span>
+              </div>
+
+              <p class="text-muted mb-4" id="modal-description-produit">Product description goes here...</p>
+
+              <!-- Quantity Selector -->
+              <div class="mb-4">
+                <label class="form-label fw-bold small text-muted text-uppercase">Quantity</label>
+                <div class="d-flex align-items-center gap-3">
+                  <div class="selecteur-quantite">
+                    <button class="btn-quantite" id="btn-modal-quantite-moins" type="button"><i
+                        class="bi bi-dash"></i></button>
+                    <span class="valeur-quantite" id="modal-valeur-quantite">1</span>
+                    <button class="btn-quantite" id="btn-modal-quantite-plus" type="button"><i
+                        class="bi bi-plus"></i></button>
+                  </div>
+                  <span class="small text-success fw-semibold"><i class="bi bi-check-circle-fill me-1"></i> In
+                    Stock</span>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="d-flex gap-2">
+                <button class="btn btn-success btn-lg w-100 fw-bold rounded-pill shadow" id="btn-modal-ajouter-panier">
+                  <i class="bi bi-cart-plus-fill me-2"></i> Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       7. SHOPPING CART DRAWER (BOOTSTRAP OFFCANVAS)
+       ========================================== -->
+  <div class="offcanvas offcanvas-end tiroir-panier-custom" tabindex="-1" id="tiroir-panier"
+    aria-labelledby="titreTiroirPanier">
+    <div class="offcanvas-header border-bottom p-3">
+      <h5 class="offcanvas-title fw-bold d-flex align-items-center gap-2" id="titreTiroirPanier">
+        <i class="bi bi-bag-check-fill text-success fs-4"></i> My Shopping Cart
+      </h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+
+    <div class="offcanvas-body d-flex flex-column p-3">
+      <!-- Cart Items List -->
+      <div class="flex-grow-1 overflow-y-auto" id="liste-elements-panier">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Empty Cart Message -->
+      <div class="panier-vide-box d-none" id="panier-vide-message">
+        <div class="panier-vide-icon">
+          <i class="bi bi-cart-x"></i>
+        </div>
+        <h6 class="fw-bold">Your cart is currently empty</h6>
+        <p class="small text-muted">Explore our fresh products and grab current discount deals.</p>
+        <button class="btn btn-sm btn-success rounded-pill px-4 mt-2" data-bs-dismiss="offcanvas">Start
+          Shopping</button>
+      </div>
+
+      <!-- Cart Invoice Summary -->
+      <div class="resume-facture d-none" id="panier-resume-footer">
+        <div class="ligne-facture">
+          <span>Subtotal</span>
+          <span class="fw-bold" id="facture-sous-total">₹ 0.00</span>
+        </div>
+        <div class="ligne-facture">
+          <span>Delivery Fee</span>
+          <span class="text-success fw-bold" id="facture-frais-livraison">FREE</span>
+        </div>
+        <div class="ligne-facture">
+          <span>GST Tax (5%)</span>
+          <span id="facture-tva">₹ 0.00</span>
+        </div>
+        <div class="ligne-facture ligne-total">
+          <span>Total Amount</span>
+          <span class="text-success" id="facture-total-general">₹ 0.00</span>
+        </div>
+
+        <button class="btn btn-success btn-lg w-100 fw-bold rounded-pill mt-3 shadow" id="btn-valider-commande">
+          Proceed to Checkout <i class="bi bi-arrow-right ms-2"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       8. AUTHENTICATION POPUP MODAL (LOGIN / REGISTER)
+       ========================================== -->
+  <div class="modal fade" id="modal-auth" tabindex="-1" aria-labelledby="modalAuthTitre" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content modal-content-epicerie">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fw-bold" id="modalAuthTitre">Welcome to TrypheneMart</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+
+          <!-- Checkout Notice Alert (Visible when unauthenticated user clicks Proceed to Checkout) -->
+          <div class="alert alert-warning border-0 rounded-3 small d-none mb-3" id="alert-checkout-auth">
+            <i class="bi bi-exclamation-triangle-fill me-1"></i> Please log in or create an account to complete your
+            grocery order. Your cart selection has been saved!
+          </div>
+
+          <!-- Auth Error / Success Alert Container -->
+          <div class="alert alert-danger border-0 rounded-3 small d-none mb-3" id="alert-auth-erreur"></div>
+
+          <!-- Login / Register Tabs -->
+          <ul class="nav nav-pills nav-fill mb-4 p-1 bg-light rounded-pill" id="onglets-auth" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active fw-bold rounded-pill" id="tab-login" data-bs-toggle="tab"
+                data-bs-target="#contenu-login" type="button" role="tab" aria-controls="contenu-login"
+                aria-selected="true">Login</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link fw-bold rounded-pill" id="tab-register" data-bs-toggle="tab"
+                data-bs-target="#contenu-register" type="button" role="tab" aria-controls="contenu-register"
+                aria-selected="false">Register</button>
+            </li>
+          </ul>
+
+          <div class="tab-content" id="contenu-tabs-auth">
+
+            <!-- FORMULAR LOGIN -->
+            <div class="tab-pane fade show active" id="contenu-login" role="tabpanel" aria-labelledby="tab-login">
+              <form id="form-login">
+                <div class="mb-3">
+                  <label for="login-email" class="form-label small fw-bold text-muted">Email Address</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0"><i class="bi bi-envelope"></i></span>
+                    <input type="email" class="form-control border-start-0 ps-0" id="login-email"
+                      placeholder="name@example.com" required>
+                  </div>
+                </div>
+                <div class="mb-4">
+                  <label for="login-password" class="form-label small fw-bold text-muted">Password</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0"><i class="bi bi-lock"></i></span>
+                    <input type="password" class="form-control border-start-0 ps-0" id="login-password"
+                      placeholder="••••••••" required>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-success btn-lg w-100 fw-bold rounded-pill shadow-sm"
+                  id="btn-submit-login">
+                  Sign In <i class="bi bi-box-arrow-in-right ms-1"></i>
+                </button>
+              </form>
+            </div>
+
+            <!-- FORMULAR REGISTER -->
+            <div class="tab-pane fade" id="contenu-register" role="tabpanel" aria-labelledby="tab-register">
+              <form id="form-register">
+                <div class="mb-3">
+                  <label for="reg-fullname" class="form-label small fw-bold text-muted">Full Name</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0"><i class="bi bi-person"></i></span>
+                    <input type="text" class="form-control border-start-0 ps-0" id="reg-fullname"
+                      placeholder="KEKE EUNICE TRYPHENE" required>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="reg-email" class="form-label small fw-bold text-muted">Email Address</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0"><i class="bi bi-envelope"></i></span>
+                    <input type="email" class="form-control border-start-0 ps-0" id="reg-email"
+                      placeholder="ket.180804@gmail.com" required>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="reg-phone" class="form-label small fw-bold text-muted">Phone Number</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0"><i class="bi bi-telephone"></i></span>
+                    <input type="tel" class="form-control border-start-0 ps-0" id="reg-phone"
+                      placeholder="+91 7696614979" required>
+                  </div>
+                </div>
+                <div class="mb-4">
+                  <label for="reg-password" class="form-label small fw-bold text-muted">Create Password</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0"><i class="bi bi-lock"></i></span>
+                    <input type="password" class="form-control border-start-0 ps-0" id="reg-password"
+                      placeholder="At least 6 characters" minlength="6" required>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-success btn-lg w-100 fw-bold rounded-pill shadow-sm"
+                  id="btn-submit-register">
+                  Create Account <i class="bi bi-person-plus ms-1"></i>
+                </button>
+              </form>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORDER CONFIRMATION MODAL -->
+  <div class="modal fade" id="modal-confirmation-commande" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered text-center">
+      <div class="modal-content modal-content-epicerie p-4">
+        <div class="text-center my-3">
+          <div
+            class="bg-success-subtle text-success d-inline-flex align-items-center justify-content-center rounded-circle"
+            style="width: 80px; height: 80px;">
+            <i class="bi bi-check-lg fs-1 fw-bold"></i>
+          </div>
+        </div>
+        <h4 class="fw-bold">Order Placed Successfully! 🎉</h4>
+        <p class="text-muted">Thank you for shopping with TrypheneMart. Our express delivery partner is picking up your
+          fresh groceries.</p>
+        <div class="bg-light p-3 rounded-3 text-start mb-3">
+          <div class="d-flex justify-content-between small text-muted mb-1">
+            <span>Order Reference:</span>
+            <span class="fw-bold text-dark" id="recap-numero-commande">#TRYP-84920</span>
+          </div>
+          <div class="d-flex justify-content-between small text-muted mb-1">
+            <span>Estimated Delivery:</span>
+            <span class="fw-bold text-success">Today within 30 mins</span>
+          </div>
+          <div class="d-flex justify-content-between small text-muted">
+            <span>Amount Paid:</span>
+            <span class="fw-bold text-dark" id="recap-montant-regle">₹ 0.00</span>
+          </div>
+        </div>
+        <button class="btn btn-success rounded-pill fw-bold py-2" data-bs-dismiss="modal">Back to Shopping</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div class="toast-conteneur-custom">
+    <div class="toast-epicerie d-none" id="toast-notification">
+      <i class="bi bi-check-circle-fill text-success fs-5"></i>
+      <span id="toast-message">Item added to cart!</span>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       9. FOOTER & CONTACT SECTION
+       ========================================== -->
+  <footer class="pied-de-page" id="contact">
+    <div class="container">
+      <div class="row g-4 mb-5">
+        <div class="col-lg-4 col-md-6">
+          <a class="logo-marque text-white mb-3" href="#home">
+            <div class="logo-icon">
+              <i class="bi bi-basket-fill"></i>
+            </div>
+            <span>Tryphene<span class="text-success">Mart</span></span>
+          </a>
+          <p class="small text-secondary mb-3">India's premier online grocery delivery platform. Providing farm-fresh
+            vegetables, organic produce, dairy, and home essentials right to your doorstep within 30 minutes.</p>
+          <div class="d-flex gap-3 fs-5 text-white">
+            <a href="#" class="text-white text-decoration-none"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-white text-decoration-none"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-white text-decoration-none"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="text-white text-decoration-none"><i class="bi bi-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+          <h6 class="titre-colonne-footer">Quick Links</h6>
+          <a href="#home" class="lien-footer">Home</a>
+          <a href="#categories" class="lien-footer">Categories</a>
+          <a href="#offers" class="lien-footer">Special Offers</a>
+          <a href="#produits" class="lien-footer">Shop All</a>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h6 class="titre-colonne-footer">Contact Us</h6>
+          <p class="small mb-2"><i class="bi bi-person-fill me-2 text-success"></i>KEKE EUNICE TRYPHENE</p>
+          <p class="small mb-2"><i class="bi bi-geo-alt-fill me-2 text-success"></i>Innovation Hub Campus, Punjab, India
+          </p>
+          <p class="small mb-2"><i class="bi bi-telephone-fill me-2 text-success"></i><a href="tel:7696614979"
+              class="text-white text-decoration-none">+91 7696614979</a></p>
+          <p class="small mb-1"><i class="bi bi-envelope-fill me-2 text-success"></i><a
+              href="mailto:ket.180804@gmail.com" class="text-white text-decoration-none">ket.180804@gmail.com</a></p>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h6 class="titre-colonne-footer">Newsletter</h6>
+          <p class="small text-secondary mb-2">Subscribe to get weekly discount coupons and fresh stock alerts.</p>
+          <div class="input-group">
+            <input type="email" class="form-control rounded-start-pill" placeholder="Your email address...">
+            <button class="btn btn-success rounded-end-pill px-3" type="button"><i class="bi bi-send-fill"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-top border-secondary pt-4 text-center small text-secondary">
+        <p class="mb-0">&copy; 2026 TrypheneMart India. Designed by KEKE EUNICE TRYPHENE. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Product Data -->
+  <script src="produits.js"></script>
+  <!-- Application JS Engine -->
+  <script src="app.js"></script>
+</body>
+
+</html>
