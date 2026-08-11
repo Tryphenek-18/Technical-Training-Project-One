@@ -1,0 +1,28 @@
+name: Contribution Quotidienne Automatique
+
+on:
+  schedule:
+    - cron: '0 12 * * *' # S'exécute chaque jour à 12h00 UTC
+  workflow_dispatch: # Permet de le lancer manuellement pour tester
+
+jobs:
+  make-contribution:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+    - name: Récupérer le code du dépôt
+      uses: actions/checkout@v4
+
+    - name: Mettre à jour le fichier de log
+      run: |
+        echo "Dernière activité le : $(date)" > daily_log.txt
+
+    - name: Configurer Git et Push les modifications
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "41898282+github-actions[bot]@://github.com"
+        git add daily_log.txt
+        git commit -m "Mise à jour quotidienne automatique"
+        git push
