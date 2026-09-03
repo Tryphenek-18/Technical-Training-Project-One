@@ -21,8 +21,8 @@ jobs:
 
     - name: Configurer Git et Push les modifications
       run: |
-        git config --global user.name "github-actions[bot]"
-        git config --global user.email "41898282+github-actions[bot]@://github.com"
+        git config --global user.name "Tryphenek-18"
+        git config --global user.email "ket.180804@gmail.com"
         git add daily_log.txt
         git commit -m "Mise à jour quotidienne automatique"
         git push
