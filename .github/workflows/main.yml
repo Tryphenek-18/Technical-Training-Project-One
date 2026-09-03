@@ -15,14 +15,21 @@ jobs:
     - name: Récupérer le code du dépôt
       uses: actions/checkout@v4
 
-    - name: Mettre à jour le fichier de log
-      run: |
-        echo "Dernière activité le : $(date)" > daily_log.txt
-
-    - name: Configurer Git et Push les modifications
+    - name: Configurer Git
       run: |
         git config --global user.name "Tryphenek-18"
         git config --global user.email "ket.180804@gmail.com"
-        git add daily_log.txt
-        git commit -m "Mise à jour quotidienne automatique"
+
+    - name: Générer plusieurs commits (Boucle)
+      run: |
+        # Boucle qui s'exécute 12 fois pour garantir plus de 10 commits
+        for i in {1..12}
+        do
+          echo "Activité de la boucle $i le : $(date)" > daily_log.txt
+          git add daily_log.txt
+          git commit -m "Mise à jour automatique - Commit $i/12"
+        done
+
+    - name: Push les modifications
+      run: |
         git push
